@@ -1,0 +1,8 @@
+.panel-heading {
+    height: 43px;
+}
+
+.panel-body {
+    height: calc(100% - 43px);
+    overflow-y: scroll;
+}

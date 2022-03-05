@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+$form-label-margin-bottom: 0;
+$card-spacer-y: 0.3rem;
+$card-spacer-x: 0.5rem;
+$input-line-height: 1;
+$input-padding-y: 0.3rem;
+$input-padding-x: 0.5rem;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+.form-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
