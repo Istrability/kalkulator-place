@@ -1,9 +1,5 @@
-import { Button, Row, Col, Alert, Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
-/* import { InputSelectField } from "./InputSelectField"; */
-import { validationUpToHundred } from "./validationFunctions";
-import InfoNote from "../../components/InfoNote";
-import { useState } from "react";
 import { InputNumberField } from "./InputNumberField";
 import { useForm } from "react-hook-form";
 import { InputSelectField } from "./InputSelectField";
@@ -11,17 +7,25 @@ import {
   invalidnostOptions,
   profesijaOptions,
 } from "../../modules/selectOptions";
+import { useState } from "react";
 
-const validateMjesecniBrojSati = (value: any) =>
-  value === 0 ? "Unesi mjesecni fond sati" : undefined;
+const loadDefaults = () => {
+  const data = localStorage.getItem("formData");
+  if (data) {
+    return JSON.parse(data);
+  } else {
+    return {};
+  }
+};
 
 const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
+
+  const [defaults] = useState<any>(loadDefaults);
 
   return (
     <Form
@@ -30,6 +34,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
       style={{ height: "100%" }}
     >
       <InputNumberField
+        defaults={defaults}
         register={register}
         errors={errors}
         name="godineStaza"
@@ -37,6 +42,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
       />
 
       <InputNumberField
+        defaults={defaults}
         register={register}
         errors={errors}
         name="brojSatiMjesecno"
@@ -46,6 +52,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
       {/* validate={validateMjesecniBrojSati} */}
 
       <InputNumberField
+        defaults={defaults}
         register={register}
         errors={errors}
         name="brojNocnih"
@@ -54,6 +61,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
       />
 
       <InputNumberField
+        defaults={defaults}
         register={register}
         errors={errors}
         name="brojPopodne"
@@ -62,6 +70,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
       />
 
       <InputNumberField
+        defaults={defaults}
         register={register}
         errors={errors}
         name="brojSubota"
@@ -69,6 +78,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
       />
 
       <InputNumberField
+        defaults={defaults}
         register={register}
         errors={errors}
         name="brojNedjelja"
@@ -76,6 +86,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
       />
 
       <InputNumberField
+        defaults={defaults}
         register={register}
         errors={errors}
         name="brojPrekovremeni"
@@ -83,6 +94,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
       />
 
       <InputNumberField
+        defaults={defaults}
         register={register}
         errors={errors}
         name="brojBlagdan"
@@ -90,14 +102,17 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
       />
 
       <InputNumberField
+        defaults={defaults}
         register={register}
         errors={errors}
         name="stopaPrireza"
         label="Stopa prireza (npr. 18)"
+        defaultValue="18"
       />
       {/* /* onChangeValidation={validationUpToHundred} */}
 
       <InputNumberField
+        defaults={defaults}
         register={register}
         errors={errors}
         name="brojDjece"
@@ -105,6 +120,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
       />
 
       <InputNumberField
+        defaults={defaults}
         register={register}
         errors={errors}
         name="brojUzdrzavanih"
@@ -112,6 +128,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
       />
 
       <InputSelectField
+        defaults={defaults}
         register={register}
         errors={errors}
         name="invalidnost"
@@ -124,6 +141,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
       </InputSelectField>
 
       <InputSelectField
+        defaults={defaults}
         register={register}
         errors={errors}
         name="profesija"
@@ -136,6 +154,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
       </InputSelectField>
 
       {/*<InputNumberField
+        defaults={defaults}
         register={register}
         errors={errors}  name="" label="" 'Koeficijent' infoNote='Unesi ukoliko profesije nema na popisu'>
           <Form.Control name='koeficijent' />
@@ -158,22 +177,6 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
       ) : null */}
     </Form>
   );
-};
-
-const initialValues = {
-  godineStaza: 0,
-  brojSatiMjesecno: 100,
-  brojNocnih: 0,
-  brojPopodne: 0,
-  brojSubota: 0,
-  brojNedjelja: 0,
-  brojPrekovremeni: 0,
-  brojBlagdan: 0,
-  stopaPrireza: 18,
-  brojDjece: 0,
-  brojUzdrzavanih: 0,
-  invalidnost: "nema",
-  profesija: "lijecnikHMP",
 };
 
 export { InputForm };

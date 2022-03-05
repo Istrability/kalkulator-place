@@ -11,6 +11,7 @@ import { calculateResult } from "../modules/calculatorSlice";
 const App = () => {
   const dispatch = useAppDispatch();
   const onFormSubmit = (formData: any) => {
+    localStorage.setItem("formData", JSON.stringify(formData));
     dispatch(calculateResult(formData));
   };
 

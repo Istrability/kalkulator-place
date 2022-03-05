@@ -10,7 +10,8 @@ const InputSelectField = ({
   infoNote,
   validate = validateInteger,
   errors,
-  defaultValue = "0",
+  defaultValue,
+  defaults,
 }: {
   register: any;
   name: string;
@@ -19,7 +20,8 @@ const InputSelectField = ({
   infoNote?: string;
   validate?: (value: string) => boolean;
   errors: any;
-  defaultValue?: string;
+  defaultValue: string;
+  defaults: any;
 }) => {
   return (
     <Form.Group
@@ -41,7 +43,7 @@ const InputSelectField = ({
       <Form.Select
         {...register(name, {})}
         isInvalid={errors[name]}
-        defaultValue={defaultValue}
+        defaultValue={defaults[name] ?? defaultValue}
       >
         {children}
       </Form.Select>

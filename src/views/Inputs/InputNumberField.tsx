@@ -9,7 +9,8 @@ const InputNumberField = ({
   infoNote,
   validate = validateInteger,
   errors,
-  defaultValue = "0",
+  defaults,
+  defaultValue,
 }: {
   register: any;
   name: string;
@@ -17,6 +18,7 @@ const InputNumberField = ({
   infoNote?: string;
   validate?: (value: string) => boolean;
   errors: any;
+  defaults: any;
   defaultValue?: string;
 }) => {
   return (
@@ -45,7 +47,7 @@ const InputNumberField = ({
         })}
         type="number"
         isInvalid={errors[name]}
-        defaultValue={defaultValue}
+        defaultValue={defaults[name] ?? defaultValue ?? ""}
       />
     </Form.Group>
   );
