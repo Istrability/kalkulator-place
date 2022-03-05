@@ -1,36 +1,39 @@
 import { OutputFieldGroup } from "./OutputFieldGroup";
-import { Row, Col, Spinner } from "react-bootstrap";
+import { Row, Col, Spinner, Alert } from "react-bootstrap";
 
 import { useAppSelector } from "../../modules/store";
 import { selectCalculatorResult } from "../../modules/calculatorSlice";
 import { selectHideOptional } from "../../modules/hideOptionalSlice";
 
 const Results = () => {
-  const {
-    values: {
-      osnovica,
-      koeficijentPlace,
-      osnovnaPlaca,
-      osnovnaSatnica,
-      dodatnoNocni,
-      dodatnoPopodnevni,
-      dodatnoSubotnji,
-      dodatnoNedjeljni,
-      dodatnoPrekovremeni,
-      dodatnoBlagdanski,
-      brutoPlaca,
-      dohodak,
-      poreznaOlaksica,
-      poreznaOsnovica,
-      porez24,
-      porez36,
-      ukupniPorez,
-      prirez,
-      nettoPlaca,
-    },
-    calculating,
-  } = useAppSelector(selectCalculatorResult);
+  const { values, calculating } = useAppSelector(selectCalculatorResult);
   const hideOptional = useAppSelector(selectHideOptional);
+
+  if (typeof values === "string") {
+    return <Alert variant="warning">{values}</Alert>;
+  }
+
+  const {
+    osnovica,
+    koeficijentPlace,
+    osnovnaPlaca,
+    osnovnaSatnica,
+    dodatnoNocni,
+    dodatnoPopodnevni,
+    dodatnoSubotnji,
+    dodatnoNedjeljni,
+    dodatnoPrekovremeni,
+    dodatnoBlagdanski,
+    brutoPlaca,
+    dohodak,
+    poreznaOlaksica,
+    poreznaOsnovica,
+    porez24,
+    porez36,
+    ukupniPorez,
+    prirez,
+    nettoPlaca,
+  } = values;
 
   return calculating ? (
     <Spinner
@@ -98,7 +101,11 @@ const Results = () => {
           value={dodatnoBlagdanski}
           hidden={hideOptional}
         />
-        <OutputFieldGroup label="Bruto plaća" value={brutoPlaca} />
+        <OutputFieldGroup
+          label="Bruto plaća"
+          value={brutoPlaca}
+          controlStyle={{ fontWeight: "bold" }}
+        />
         <OutputFieldGroup
           label="Dohodak"
           value={dohodak}
@@ -130,7 +137,11 @@ const Results = () => {
           hidden={hideOptional}
         />
         <OutputFieldGroup label="Prirez" value={prirez} hidden={hideOptional} />
-        <OutputFieldGroup label="Neto plaća" value={nettoPlaca} />
+        <OutputFieldGroup
+          label="Neto plaća"
+          value={nettoPlaca}
+          controlStyle={{ fontWeight: "bold" }}
+        />
       </Row>
     </form>
   );

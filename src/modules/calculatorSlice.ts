@@ -6,7 +6,7 @@ const initialState = {
   values: {},
   calculating: false,
 } as {
-  values: Record<string, number>;
+  values: Record<string, number> | string;
   calculating: boolean;
 };
 
@@ -15,7 +15,13 @@ export const calculatorSlice = createSlice({
   initialState,
   reducers: {
     calculateResult: (state, action) => {
-      state.values = izracunajPlacu(action.payload);
+      let results: Record<string, number> | string;
+      try {
+        results = izracunajPlacu(action.payload);
+      } catch (e: any) {
+        results = e.message;
+      }
+      state.values = results;
     },
   },
 });

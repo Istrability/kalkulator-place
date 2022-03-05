@@ -18,6 +18,8 @@ $card-spacer-x: 0.5rem;
 $input-line-height: 1;
 $input-padding-y: 0.3rem;
 $input-padding-x: 0.5rem;
+$input-focus-box-shadow: 0 1px 0 0.15rem rgb(13 110 253 / 25%);
+$focus-box-shadow: 0 1px 0 0.15rem rgb(220 53 69 / 25%);
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 

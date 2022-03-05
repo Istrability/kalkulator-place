@@ -95,7 +95,7 @@ function izracunajPlacu({
       odbitakZaInvaliditet = 3750;
       break;
     default:
-      throw new Error("nepoznata invalidnost");
+      throw new Error("Nepoznata invalidnost");
   }
 
   let osnovica = 5421.54;
@@ -123,11 +123,14 @@ function izracunajPlacu({
       koeficijentDodatkaNaProfesiju2 = 0.2;
       break;
     default:
-      throw new Error("nepoznata profesija");
+      throw new Error("Nepoznata profesija");
   }
   let osnovnaPlaca = osnovica * koeficijentPlace * (1 + 0.005 * godineStaza);
   let dodatakNaProfesiju = osnovnaPlaca * koeficijentDodatkaNaProfesiju;
   let dodatakNaProfesiju2 = osnovnaPlaca * koeficijentDodatkaNaProfesiju2;
+  if (brojSatiMjesecno === 0) {
+    throw new Error("Fond sati je 0");
+  }
   let osnovnaSatnica = osnovnaPlaca / brojSatiMjesecno;
   let dodatnoNocni = osnovnaSatnica * 0.4 * brojNocnih;
   let dodatnoPopodnevni = osnovnaSatnica * 0.1 * brojPopodne;

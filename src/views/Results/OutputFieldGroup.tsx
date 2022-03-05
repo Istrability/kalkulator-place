@@ -1,6 +1,6 @@
 import { Col, Form } from "react-bootstrap";
 
-const OutputFieldGroup = ({ label, value, hidden }: any) =>
+const OutputFieldGroup = ({ label, value, hidden, controlStyle }: any) =>
   hidden ? null : (
     <Col xs={6}>
       <Form.Group>
@@ -10,7 +10,7 @@ const OutputFieldGroup = ({ label, value, hidden }: any) =>
           placeholder="---"
           readOnly
           value={value ? value.toFixed(2) : value}
-          style={{ width: "100%" }}
+          style={{ width: "100%", ...controlStyle }}
         />
       </Form.Group>
     </Col>
