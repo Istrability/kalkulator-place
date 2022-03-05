@@ -22,7 +22,7 @@ const InputNumberField = ({
   return (
     <Form.Group
       controlId={name}
-      style={{ marginBottom: "0.5rem", marginTop: "0.5rem" }}
+      style={{ marginBottom: "0.7rem", marginTop: "0.7rem" }}
     >
       <div
         style={{
@@ -31,7 +31,7 @@ const InputNumberField = ({
           justifyContent: "space-between",
         }}
       >
-        <Form.Label style={{ lineHeight: 1, marginBottom: "0.1rem" }}>
+        <Form.Label style={{ lineHeight: 1, marginBottom: "0.2rem" }}>
           {label}
         </Form.Label>
         {infoNote && <InfoNote text={infoNote} />}
