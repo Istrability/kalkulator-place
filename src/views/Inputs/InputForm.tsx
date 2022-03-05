@@ -154,7 +154,8 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
         })}
       </InputSelectField>
 
-      {watch("profesija") === "drugo" && (
+      {watch("profesija", defaults["profesija"] ?? "lijecnikHMP") ===
+        "drugo" && (
         <>
           <InputNumberField
             defaults={defaults}
