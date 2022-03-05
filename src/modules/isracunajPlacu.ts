@@ -98,7 +98,7 @@ function izracunajPlacu({
       throw new Error("Nepoznata invalidnost");
   }
 
-  let osnovica = 5421.54;
+  let osnovica = 6044.51;
   let koeficijentPlace = 0;
   let koeficijentDodatkaNaProfesiju = 0;
   let koeficijentDodatkaNaProfesiju2 = 0;
