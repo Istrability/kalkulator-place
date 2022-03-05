@@ -22,6 +22,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
 
@@ -153,28 +154,39 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
         })}
       </InputSelectField>
 
-      {/*<InputNumberField
-        defaults={defaults}
-        register={register}
-        errors={errors}  name="" label="" 'Koeficijent' infoNote='Unesi ukoliko profesije nema na popisu'>
-          <Form.Control name='koeficijent' />
-*/}
+      {watch("profesija") === "drugo" && (
+        <>
+          <InputNumberField
+            defaults={defaults}
+            register={register}
+            errors={errors}
+            name="koeficijentPlace"
+            label="Koeficijent plaće"
+          />
+
+          <InputNumberField
+            defaults={defaults}
+            register={register}
+            errors={errors}
+            name="koeficijentDodatkaNaProfesiju"
+            label="Koeficijent dodatka na profesiju"
+          />
+
+          <InputNumberField
+            defaults={defaults}
+            register={register}
+            errors={errors}
+            name="koeficijentDodatkaNaProfesiju2"
+            label="Koeficijent dodatka na profesiju 2"
+          />
+        </>
+      )}
 
       <div style={{ width: "100%", margin: "0.5rem auto 0.2rem" }}>
         <Button type="submit" style={{ width: "100%" }}>
           Izračunaj
         </Button>
       </div>
-
-      {/* invalid ? (
-        <Row>
-          <Col xs={12}>
-            <Alert variant={"warning"} style={{ margin: "0px 0px 0px 12px" }}>
-              Provjeri vrijednosti!
-            </Alert>
-          </Col>
-        </Row>
-      ) : null */}
     </Form>
   );
 };

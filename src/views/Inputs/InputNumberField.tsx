@@ -11,6 +11,7 @@ const InputNumberField = ({
   errors,
   defaults,
   defaultValue,
+  step,
 }: {
   register: any;
   name: string;
@@ -20,6 +21,7 @@ const InputNumberField = ({
   errors: any;
   defaults: any;
   defaultValue?: string;
+  step?: number | "any";
 }) => {
   return (
     <Form.Group
@@ -40,12 +42,13 @@ const InputNumberField = ({
       </div>
       <Form.Control
         {...register(name, {
-          validate: validate,
+          /* validate: validate, */
           required: true,
           valueAsNumber: true,
           min: 0,
         })}
         type="number"
+        step={step ?? "any"}
         isInvalid={errors[name]}
         defaultValue={defaults[name] ?? defaultValue ?? ""}
       />

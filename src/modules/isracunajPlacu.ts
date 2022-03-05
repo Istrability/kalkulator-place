@@ -14,6 +14,9 @@ function izracunajPlacu({
   brojUzdrzavanih,
   invalidnost,
   profesija,
+  koeficijentPlace = 0,
+  koeficijentDodatkaNaProfesiju = 0,
+  koeficijentDodatkaNaProfesiju2 = 0,
 }: {
   godineStaza: number;
   brojSatiMjesecno: number;
@@ -28,6 +31,9 @@ function izracunajPlacu({
   brojUzdrzavanih: number;
   invalidnost: keyof typeof invalidnostOptions;
   profesija: keyof typeof profesijaOptions;
+  koeficijentPlace: number;
+  koeficijentDodatkaNaProfesiju: number;
+  koeficijentDodatkaNaProfesiju2: number;
 }) {
   let olaksicaZaDjecu;
 
@@ -99,9 +105,6 @@ function izracunajPlacu({
   }
 
   let osnovica = 6044.51;
-  let koeficijentPlace = 0;
-  let koeficijentDodatkaNaProfesiju = 0;
-  let koeficijentDodatkaNaProfesiju2 = 0;
   switch (profesija) {
     case "lijecnikHMP":
       koeficijentPlace = 1.794;
@@ -121,6 +124,8 @@ function izracunajPlacu({
       koeficijentPlace = 0.951;
       koeficijentDodatkaNaProfesiju = 0.04;
       koeficijentDodatkaNaProfesiju2 = 0.2;
+      break;
+    case "drugo":
       break;
     default:
       throw new Error("Nepoznata profesija");
