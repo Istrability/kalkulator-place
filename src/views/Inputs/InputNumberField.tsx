@@ -1,4 +1,4 @@
-import { Form } from "react-bootstrap";
+import { Col, Form } from "react-bootstrap";
 import InfoNote from "../../components/InfoNote";
 import { validateInteger } from "./validationFunctions";
 
@@ -24,35 +24,35 @@ const InputNumberField = ({
   step?: number | "any";
 }) => {
   return (
-    <Form.Group
-      controlId={name}
-      style={{ marginBottom: "0.7rem", marginTop: "0.7rem" }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
+    <Col xs={6}>
+      <Form.Group
+        controlId={name}
+        style={{ marginBottom: "0.3rem", marginTop: "0.3rem" }}
       >
-        <Form.Label style={{ lineHeight: 1, marginBottom: "0.2rem" }}>
-          {label}
-        </Form.Label>
-        {infoNote && <InfoNote text={infoNote} />}
-      </div>
-      <Form.Control
-        {...register(name, {
-          /* validate: validate, */
-          required: true,
-          valueAsNumber: true,
-          min: 0,
-        })}
-        type="number"
-        step={step ?? "any"}
-        isInvalid={errors[name]}
-        defaultValue={defaults[name] ?? defaultValue ?? ""}
-      />
-    </Form.Group>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Form.Label>{label}</Form.Label>
+          {infoNote && <InfoNote text={infoNote} />}
+        </div>
+        <Form.Control
+          {...register(name, {
+            /* validate: validate, */
+            required: true,
+            valueAsNumber: true,
+            min: 0,
+          })}
+          type="number"
+          step={step ?? "any"}
+          isInvalid={errors[name]}
+          defaultValue={defaults[name] ?? defaultValue ?? ""}
+        />
+      </Form.Group>
+    </Col>
   );
 };
 
