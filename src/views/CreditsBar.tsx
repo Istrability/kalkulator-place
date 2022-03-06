@@ -11,7 +11,7 @@ const CreditsBar = () => {
         fontSize: "0.85rem",
       }}
     >
-      Izradili: Petar Beslić, Vedran Rafaelić (vrafaeli@msn.com)
+      Izradili: Petar Bešlić, Vedran Rafaelić (vrafaeli@msn.com)
     </div>
   );
 };

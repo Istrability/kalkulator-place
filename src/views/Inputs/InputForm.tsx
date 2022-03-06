@@ -39,7 +39,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
         register={register}
         errors={errors}
         name="godineStaza"
-        label="Godine Staža"
+        label="Godine staža"
       />
 
       <InputNumberField
