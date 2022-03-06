@@ -34,14 +34,6 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
         defaults={defaults}
         register={register}
         errors={errors}
-        name="godineStaza"
-        label="Godine staža"
-      />
-
-      <InputNumberField
-        defaults={defaults}
-        register={register}
-        errors={errors}
         name="brojSatiMjesecno"
         label="Redovan mjesečni fond sati"
         infoNote="Ukupni mjesečni fond sati. Jednak za sve zaposlenike."
@@ -98,6 +90,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
         label="Broj blagdanskih sati"
       />
 
+      <div style={{ width: "100%", height: "2px", background: "black" }} />
       <InputNumberField
         defaults={defaults}
         register={register}
@@ -107,6 +100,14 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
         defaultValue="18"
       />
       {/* /* onChangeValidation={validationUpToHundred} */}
+
+      <InputNumberField
+        defaults={defaults}
+        register={register}
+        errors={errors}
+        name="godineStaza"
+        label="Godine staža"
+      />
 
       <InputNumberField
         defaults={defaults}
