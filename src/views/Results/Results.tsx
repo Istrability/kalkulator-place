@@ -72,7 +72,7 @@ const Results = () => {
         <div />
 
         <OutputFieldGroup
-          label="Nocni sat"
+          label="Noćni sat"
           value={dodatnoNocni}
           hidden={hideOptional}
         />
@@ -112,7 +112,7 @@ const Results = () => {
           hidden={hideOptional}
         />
         <OutputFieldGroup
-          label="Porezna olaksica"
+          label="Porezna olakšica"
           value={poreznaOlaksica}
           hidden={hideOptional}
         />
