@@ -1,3 +1,4 @@
+import { koeficijenti } from "./koeficijenti";
 import { invalidnostOptions, profesijaOptions } from "./selectOptions";
 
 function izracunajPlacu({
@@ -36,8 +37,6 @@ function izracunajPlacu({
   koeficijentDodatkaNaProfesiju2: number;
 }) {
   let olaksicaZaDjecu;
-
-  console.log("godine staza:", godineStaza);
 
   switch (brojDjece) {
     case 0:
@@ -104,32 +103,19 @@ function izracunajPlacu({
       throw new Error("Nepoznata invalidnost");
   }
 
-  let osnovica = 6044.51;
-  switch (profesija) {
-    case "lijecnikHMP":
-      koeficijentPlace = 1.794;
-      koeficijentDodatkaNaProfesiju = 0.12;
-      koeficijentDodatkaNaProfesiju2 = 0.2;
-      break;
-    case "lijecnik":
-      koeficijentPlace = 1.794;
-      koeficijentDodatkaNaProfesiju = 0.12;
-      break;
-    case "medicinskiTehnicar":
-      koeficijentPlace = 1.067;
-      koeficijentDodatkaNaProfesiju = 0.04;
-      koeficijentDodatkaNaProfesiju2 = 0.2;
-      break;
-    case "vozacHMP":
-      koeficijentPlace = 0.951;
-      koeficijentDodatkaNaProfesiju = 0.04;
-      koeficijentDodatkaNaProfesiju2 = 0.2;
-      break;
-    case "drugo":
-      break;
-    default:
+  if (profesija !== "drugo") {
+    const nadjeniKoeficijenti = koeficijenti[profesija];
+    if (nadjeniKoeficijenti === undefined) {
       throw new Error("Nepoznata profesija");
+    }
+    koeficijentPlace = nadjeniKoeficijenti.koeficijentPlace;
+    koeficijentDodatkaNaProfesiju =
+      nadjeniKoeficijenti.koeficijentDodatkaNaProfesiju;
+    koeficijentDodatkaNaProfesiju2 =
+      nadjeniKoeficijenti.koeficijentDodatkaNaProfesiju2;
   }
+
+  let osnovica = 6044.51;
   let osnovnaPlaca = osnovica * koeficijentPlace * (1 + 0.005 * godineStaza);
   let dodatakNaProfesiju = osnovnaPlaca * koeficijentDodatkaNaProfesiju;
   let dodatakNaProfesiju2 = osnovnaPlaca * koeficijentDodatkaNaProfesiju2;
