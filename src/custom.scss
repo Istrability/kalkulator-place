@@ -37,3 +37,10 @@ $focus-box-shadow: 0 0px 0 0.2rem rgb(220 53 69 / 25%);
     margin: 28px auto;
   }
 }
+
+.my-header-wrapper {
+  flex-shrink: "0";
+  @media (min-width: 992px) {
+    margin-bottom: 1rem;
+  }
+}

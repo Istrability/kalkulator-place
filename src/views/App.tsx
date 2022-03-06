@@ -28,7 +28,7 @@ const App = () => {
         justifyContent: "space-between",
       }}
     >
-      <div style={{ flexShrink: "0" }}>
+      <div className="my-header-wrapper">
         <MyHeader />
       </div>
 
