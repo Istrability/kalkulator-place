@@ -1,5 +1,4 @@
-import { koeficijenti } from "./koeficijenti";
-import { invalidnostOptions, profesijaOptions } from "./selectOptions";
+import { invalidnostOptions } from "./selectOptions";
 
 function izracunajPlacu({
   godineStaza,
@@ -14,10 +13,9 @@ function izracunajPlacu({
   brojDjece,
   brojUzdrzavanih,
   invalidnost,
-  profesija,
-  koeficijentPlace = 0,
-  koeficijentDodatkaNaProfesiju = 0,
-  koeficijentDodatkaNaProfesiju2 = 0,
+  koeficijentSlozenostiPosla,
+  koeficijentPolozajnogDodatka,
+  koeficijentDodatkaZaOdgovornost,
 }: {
   godineStaza: number;
   brojSatiMjesecno: number;
@@ -31,12 +29,16 @@ function izracunajPlacu({
   brojDjece: number;
   brojUzdrzavanih: number;
   invalidnost: keyof typeof invalidnostOptions;
-  profesija: keyof typeof profesijaOptions;
-  koeficijentPlace: number;
-  koeficijentDodatkaNaProfesiju: number;
-  koeficijentDodatkaNaProfesiju2: number;
+  koeficijentSlozenostiPosla: number;
+  koeficijentPolozajnogDodatka: number;
+  koeficijentDodatkaZaOdgovornost: string;
 }) {
   let olaksicaZaDjecu;
+  /* console.log(
+    koeficijentSlozenostiPosla,
+    koeficijentPolozajnogDodatka,
+    koeficijentDodatkaZaOdgovornost
+  ); */
 
   switch (brojDjece) {
     case 0:
@@ -103,22 +105,24 @@ function izracunajPlacu({
       throw new Error("Nepoznata invalidnost");
   }
 
-  if (profesija !== "drugo") {
+  /* if (profesija !== "drugo") {
     const nadjeniKoeficijenti = koeficijenti[profesija];
     if (nadjeniKoeficijenti === undefined) {
       throw new Error("Nepoznata profesija");
     }
     koeficijentPlace = nadjeniKoeficijenti.koeficijentPlace;
-    koeficijentDodatkaNaProfesiju =
-      nadjeniKoeficijenti.koeficijentDodatkaNaProfesiju;
-    koeficijentDodatkaNaProfesiju2 =
-      nadjeniKoeficijenti.koeficijentDodatkaNaProfesiju2;
-  }
+    koeficijentPolozajnogDodatka =
+      nadjeniKoeficijenti.koeficijentPolozajnogDodatka;
+    koeficijentPolozajnogDodatka2 =
+      nadjeniKoeficijenti.koeficijentPolozajnogDodatka2;
+  } */
 
   let osnovica = 6044.51;
-  let osnovnaPlaca = osnovica * koeficijentPlace * (1 + 0.005 * godineStaza);
-  let dodatakNaProfesiju = osnovnaPlaca * koeficijentDodatkaNaProfesiju;
-  let dodatakNaProfesiju2 = osnovnaPlaca * koeficijentDodatkaNaProfesiju2;
+  let osnovnaPlaca =
+    osnovica * koeficijentSlozenostiPosla * (1 + 0.005 * godineStaza);
+  let dodatakNaProfesiju = osnovnaPlaca * koeficijentPolozajnogDodatka;
+  let dodatakNaProfesiju2 =
+    osnovnaPlaca * Number(koeficijentDodatkaZaOdgovornost);
   if (brojSatiMjesecno === 0) {
     throw new Error("Fond sati je 0");
   }
@@ -153,7 +157,7 @@ function izracunajPlacu({
 
   return {
     osnovica,
-    koeficijentPlace,
+    koeficijentSlozenostiPosla,
     osnovnaPlaca,
     osnovnaSatnica,
     dodatnoNocni,

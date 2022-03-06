@@ -15,7 +15,6 @@ const Results = () => {
 
   const {
     osnovica,
-    koeficijentPlace,
     osnovnaPlaca,
     osnovnaSatnica,
     dodatnoNocni,
@@ -48,11 +47,11 @@ const Results = () => {
           value={osnovica}
           hidden={hideOptional}
         />
-        <OutputFieldGroup
-          label="Koeficijent place"
-          value={koeficijentPlace}
+        {/* <OutputFieldGroup
+          label="Koeficijent složenosti posla"
+          value={koeficijentSlozenostiPosla}
           hidden={hideOptional}
-        />
+        /> */}
         <OutputFieldGroup
           label="Osnovna placa"
           value={osnovnaPlaca}

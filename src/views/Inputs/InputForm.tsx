@@ -3,10 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { InputNumberField } from "./InputNumberField";
 import { useForm } from "react-hook-form";
 import { InputSelectField } from "./InputSelectField";
-import {
-  invalidnostOptions,
-  profesijaOptions,
-} from "../../modules/selectOptions";
+import { invalidnostOptions } from "../../modules/selectOptions";
 import { useState } from "react";
 
 const loadDefaults = () => {
@@ -22,7 +19,6 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
@@ -137,11 +133,15 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
         defaultValue="nema"
       >
         {Object.entries(invalidnostOptions).map((option) => {
-          return <option value={option[0]}>{option[1]}</option>;
+          return (
+            <option key={option[0]} value={option[0]}>
+              {option[1]}
+            </option>
+          );
         })}
       </InputSelectField>
 
-      <InputSelectField
+      {/* <InputSelectField
         defaults={defaults}
         register={register}
         errors={errors}
@@ -152,9 +152,9 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
         {Object.entries(profesijaOptions).map((option) => {
           return <option value={option[0]}>{option[1]}</option>;
         })}
-      </InputSelectField>
+      </InputSelectField> */}
 
-      {watch("profesija", defaults["profesija"] ?? "lijecnikHMP") ===
+      {/* watch("profesija", defaults["profesija"] ?? "lijecnikHMP") ===
         "drugo" && (
         <>
           <InputNumberField
@@ -162,7 +162,7 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
             register={register}
             errors={errors}
             name="koeficijentPlace"
-            label="Koeficijent plaće"
+            label="Koeficijent složenosti posla"
           />
 
           <InputNumberField
@@ -172,16 +172,41 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
             name="koeficijentDodatkaNaProfesiju"
             label="Koeficijent dodatka na profesiju"
           />
-
-          <InputNumberField
-            defaults={defaults}
-            register={register}
-            errors={errors}
-            name="koeficijentDodatkaNaProfesiju2"
-            label="Koeficijent dodatka na profesiju 2"
-          />
         </>
-      )}
+      ) */}
+
+      <InputNumberField
+        defaults={defaults}
+        register={register}
+        errors={errors}
+        name="koeficijentSlozenostiPosla"
+        label="Koeficijent složenosti posla"
+      />
+
+      <InputNumberField
+        defaults={defaults}
+        register={register}
+        errors={errors}
+        name="koeficijentPolozajnogDodatka"
+        label="Koeficijent položajnog dodatka"
+      />
+
+      <InputSelectField
+        defaults={defaults}
+        register={register}
+        errors={errors}
+        name="koeficijentDodatkaZaOdgovornost"
+        label="Koeficijent dodatka za odgovornost"
+        defaultValue="0.16"
+      >
+        {[0.16, 0.08, 0].map((option) => {
+          return (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          );
+        })}
+      </InputSelectField>
 
       <div style={{ width: "100%", margin: "0.5rem auto 0.2rem" }}>
         <Button type="submit" style={{ width: "100%" }}>
