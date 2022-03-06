@@ -72,32 +72,32 @@ const Results = () => {
         <div />
 
         <OutputFieldGroup
-          label="Noćni sat"
+          label="Noćni dodatak"
           value={dodatnoNocni}
           hidden={hideOptional}
         />
         <OutputFieldGroup
-          label="Popodnevni sat"
+          label="Popodnevni dodatak"
           value={dodatnoPopodnevni}
           hidden={hideOptional}
         />
         <OutputFieldGroup
-          label="Subota sat"
+          label="Subotnji dodatak"
           value={dodatnoSubotnji}
           hidden={hideOptional}
         />
         <OutputFieldGroup
-          label="Nedjelja sat"
+          label="Nedjeljni dodatak"
           value={dodatnoNedjeljni}
           hidden={hideOptional}
         />
         <OutputFieldGroup
-          label="Prekovremeni sat"
+          label="Prekovremeni dodatak"
           value={dodatnoPrekovremeni}
           hidden={hideOptional}
         />
         <OutputFieldGroup
-          label="Blagdan sat"
+          label="Blagdanski dodatak"
           value={dodatnoBlagdanski}
           hidden={hideOptional}
         />
