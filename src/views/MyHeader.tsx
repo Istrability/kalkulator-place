@@ -26,7 +26,7 @@ const MyHeader = () => {
         </div>
       ) : null}
 
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: "center", lineHeight: 0 }}>
         {showNote ? (
           <ArrowUp
             onClick={() => setShowNote(!showNote)}
