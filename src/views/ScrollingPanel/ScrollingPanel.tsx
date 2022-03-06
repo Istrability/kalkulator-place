@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 
 import { MyPanelHeader } from "./MyPanelHeader";
 import "./ScrollingPanel.css";
-import { onScrollCallbacks } from "./scrollingPanelUtils";
+/* import { onScrollCallbacks } from "./scrollingPanelUtils"; */
 
 const ScrollingPanel = ({ headerText, children, showButton }: any) => {
   /* componentDidMount() {

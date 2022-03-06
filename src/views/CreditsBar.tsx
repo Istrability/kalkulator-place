@@ -8,7 +8,7 @@ const CreditsBar = () => {
         overflowX: "hidden",
         display: "flex",
         justifyContent: "center",
-        fontSize: "0.85rem",
+        fontSize: "0.95rem",
       }}
     >
       Izradili: Petar Bešlić, Vedran Rafaelić (vrafaeli@msn.com)

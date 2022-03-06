@@ -1,13 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 
-const initialState = false as boolean;
+const initialState = JSON.parse(
+  localStorage.getItem("hideOptional") ?? "true"
+) as boolean;
 
 export const hideOptionalSlice = createSlice({
   name: "hideOptional",
   initialState,
   reducers: {
     setHideOptional: (_state, action) => {
+      localStorage.setItem("hideOptional", JSON.stringify(action.payload));
       return action.payload;
     },
   },

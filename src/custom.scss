@@ -30,3 +30,10 @@ $focus-box-shadow: 0 0px 0 0.2rem rgb(220 53 69 / 25%);
   line-height: 1;
   margin-bottom: 0.2rem;
 }
+
+.input-form-divider {
+  margin: 10px auto;
+  @media (min-width: 992px) {
+    margin: 28px auto;
+  }
+}

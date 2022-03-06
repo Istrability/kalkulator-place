@@ -2,7 +2,15 @@ import { useState } from "react";
 import { ArrowUp, ArrowDown } from "react-bootstrap-icons";
 
 const MyHeader = () => {
-  const [showNote, setShowNote] = useState(true);
+  const [showNote, setShowNote] = useState<boolean>(
+    JSON.parse(localStorage.getItem("showNote") ?? "true")
+  );
+
+  const toggleShowNote = () => {
+    const newValue = !showNote;
+    localStorage.setItem("showNote", JSON.stringify(newValue));
+    setShowNote(newValue);
+  };
 
   return (
     <div
@@ -29,7 +37,7 @@ const MyHeader = () => {
       <div style={{ textAlign: "center", lineHeight: 0 }}>
         {showNote ? (
           <ArrowUp
-            onClick={() => setShowNote(!showNote)}
+            onClick={toggleShowNote}
             style={{
               cursor: "pointer",
               padding: "0px 5px",
@@ -38,7 +46,7 @@ const MyHeader = () => {
           />
         ) : (
           <ArrowDown
-            onClick={() => setShowNote(!showNote)}
+            onClick={toggleShowNote}
             style={{
               cursor: "pointer",
               padding: "0px 5px",

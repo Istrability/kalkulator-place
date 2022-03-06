@@ -90,11 +90,12 @@ const InputForm = ({ onSubmit }: { onSubmit: (values: any) => void }) => {
         />
 
         <div
+          className="input-form-divider"
           style={{
             width: "95%",
             height: "2px",
             background: "lightgray",
-            margin: "28px auto",
+            /* margin: "28px auto", */
           }}
         />
 
