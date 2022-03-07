@@ -33,14 +33,27 @@ $focus-box-shadow: 0 0px 0 0.2rem rgb(220 53 69 / 25%);
 
 .input-form-divider {
   margin: 10px auto;
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
     margin: 28px auto;
   }
 }
 
 .my-header-wrapper {
   flex-shrink: "0";
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
     margin-bottom: 1rem;
+  }
+}
+
+.my-container {
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin: 0px auto;
+  height: 100%;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0rem 0rem;
+  @media (min-width: 768px) {
+    padding: 0rem 1rem;
   }
 }

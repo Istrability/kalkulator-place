@@ -32,18 +32,7 @@ const App = () => {
         <MyHeader />
       </div>
 
-      <Container
-        style={{
-          flexGrow: "1",
-          flexShrink: "1",
-          margin: "0px auto",
-          height: "100%",
-          width: "100%",
-          maxWidth: "1300px",
-          minHeight: "400px",
-          padding: "0rem 1rem",
-        }}
-      >
+      <Container className="my-container">
         <Row style={{ height: "100%", maxWidth: "1000px", margin: "auto" }}>
           <Col xs={12} md={6} style={{ margin: "1rem 0rem" }}>
             <ScrollingPanel headerText="Parametri" showButton={false}>

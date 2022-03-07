@@ -5,8 +5,12 @@ const InfoNote = ({ text }: { text: string }) => {
   return (
     <OverlayTrigger
       placement="top"
-      delay={{ show: 250, hide: 250 }}
-      overlay={<Tooltip id="button-tooltip">{text}</Tooltip>}
+      delay={{ show: 0, hide: 50 }}
+      overlay={
+        <Tooltip id="button-tooltip" style={{ fontSize: "16px" }}>
+          {text}
+        </Tooltip>
+      }
     >
       <span
         style={{
