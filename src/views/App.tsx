@@ -34,13 +34,13 @@ const App = () => {
 
       <Container className="my-container">
         <Row style={{ height: "100%", maxWidth: "1000px", margin: "auto" }}>
-          <Col xs={12} md={6} style={{ margin: "1rem 0rem" }}>
+          <Col xs={12} md={6} style={{ padding: "0.8rem 0.8rem" }}>
             <ScrollingPanel headerText="Parametri" showButton={false}>
               <InputForm onSubmit={onFormSubmit} />
             </ScrollingPanel>
           </Col>
           {/* <Col xs={0} md={0} lg={1} /> */}
-          <Col xs={12} md={6} style={{ margin: "1rem 0rem" }}>
+          <Col xs={12} md={6} style={{ padding: "0.8rem 0.8rem" }} id="results">
             <ScrollingPanel headerText="Rezultati" showButton={true}>
               <Results />
             </ScrollingPanel>

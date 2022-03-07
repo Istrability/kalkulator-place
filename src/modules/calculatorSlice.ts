@@ -21,6 +21,7 @@ export const calculatorSlice = createSlice({
       } catch (e: any) {
         results = e.message;
       }
+      document.getElementById("results")?.scrollIntoView({ block: "start" });
       state.values = results;
     },
   },
