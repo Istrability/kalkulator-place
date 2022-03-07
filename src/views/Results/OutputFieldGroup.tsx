@@ -1,7 +1,17 @@
 import { Col, Form } from "react-bootstrap";
 
-const OutputFieldGroup = ({ label, value, hidden, controlStyle }: any) =>
-  hidden ? null : (
+const OutputFieldGroup = ({
+  label,
+  value,
+  hidden = false,
+  controlStyle,
+}: {
+  label: string;
+  value: number;
+  hidden?: boolean;
+  controlStyle?: React.CSSProperties;
+}) => {
+  return hidden ? null : (
     <Col xs={6}>
       <Form.Group style={{ marginBottom: "0.3rem", marginTop: "0.3rem" }}>
         <Form.Label>{label}</Form.Label>
@@ -15,5 +25,6 @@ const OutputFieldGroup = ({ label, value, hidden, controlStyle }: any) =>
       </Form.Group>
     </Col>
   );
+};
 
 export { OutputFieldGroup };

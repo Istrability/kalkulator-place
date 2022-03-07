@@ -58,17 +58,12 @@ const Results = () => {
           hidden={hideOptional}
         />
 
-        <Col xs={6} md={6} />
-        <div />
-
         <OutputFieldGroup
           label="Osnovna satnica"
           value={osnovnaSatnica}
           hidden={hideOptional}
         />
-
         <Col xs={6} md={6} hidden={hideOptional} />
-        <div />
 
         <OutputFieldGroup
           label="Noćni dodatak"
@@ -136,6 +131,7 @@ const Results = () => {
           hidden={hideOptional}
         />
         <OutputFieldGroup label="Prirez" value={prirez} hidden={hideOptional} />
+
         <OutputFieldGroup
           label="Neto plaća"
           value={nettoPlaca}

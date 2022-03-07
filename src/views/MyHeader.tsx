@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Collapse } from "react-bootstrap";
 import { ArrowUp, ArrowDown } from "react-bootstrap-icons";
 
 const MyHeader = () => {
@@ -12,6 +13,8 @@ const MyHeader = () => {
     setShowNote(newValue);
   };
 
+  const ArrowComponent = showNote ? ArrowUp : ArrowDown;
+
   return (
     <div
       style={{
@@ -23,8 +26,13 @@ const MyHeader = () => {
     >
       <h2 style={{ textAlign: "center", margin: "5px" }}>Kalkulator plaće</h2>
 
-      {showNote ? (
-        <div style={{ textAlign: "center", fontSize: "16px" }}>
+      <Collapse in={showNote}>
+        <div
+          style={{
+            textAlign: "center",
+            fontSize: "16px",
+          }}
+        >
           <span style={{ fontWeight: "bold" }}>Primjer 1:</span> Ukoliko je
           smjena subota 19:00 do nedjelja 7:00, unosimo 5 sati subote, 7 sati
           nedjelje te 8 sati noćnog rada. <br />
@@ -32,28 +40,17 @@ const MyHeader = () => {
           smjena ponedjeljak blagdan 7:00-19:00, unosimo 5 sati popodnevnog rada
           i 12 sati blaganskog rada.
         </div>
-      ) : null}
+      </Collapse>
 
       <div style={{ textAlign: "center", lineHeight: 0 }}>
-        {showNote ? (
-          <ArrowUp
-            onClick={toggleShowNote}
-            style={{
-              cursor: "pointer",
-              padding: "0px 5px",
-              boxSizing: "content-box",
-            }}
-          />
-        ) : (
-          <ArrowDown
-            onClick={toggleShowNote}
-            style={{
-              cursor: "pointer",
-              padding: "0px 5px",
-              boxSizing: "content-box",
-            }}
-          />
-        )}
+        <ArrowComponent
+          onClick={toggleShowNote}
+          style={{
+            cursor: "pointer",
+            padding: "5px 5px 0px",
+            boxSizing: "content-box",
+          }}
+        />
       </div>
     </div>
   );
