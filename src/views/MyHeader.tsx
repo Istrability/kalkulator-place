@@ -24,7 +24,9 @@ const MyHeader = () => {
         flexDirection: "column",
       }}
     >
-      <h2 style={{ textAlign: "center", margin: "5px" }}>Kalkulator plaće</h2>
+      <h2 style={{ textAlign: "center", margin: "5px", marginTop: "10px" }}>
+        Kalkulator plaće
+      </h2>
 
       <Collapse in={showNote}>
         <div
